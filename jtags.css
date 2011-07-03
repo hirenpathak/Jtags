@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.jq_tags_editor
+{
+	border: solid 1px #aaa;
+	color: #222;
+	min-height: 30px;
+	padding: 5px 5px 10px 5px;
+}
+.jq_tags_editor input[type="text"]
+{
+	border: none;
+}
+.jq_tags_editor .jq_tags_tokens
+{
+}
+.jq_tags_editor .jq_tags_tokens  .jq_tags_token
+{
+	-moz-border-radius: 2px;
+	background-color: #c7da76;
+	border: solid 1px #b7c963;
+	color: #111;
+	float: left;
+	margin: 0 5px 5px 0;
+	padding: 3px 5px;
+}
+.jq_tags_editor .jq_tags_tokens  .jq_tags_token a
+{
+	color: #749440;
+	fon-weight: bold;
+	margin-left: 7px;
+}

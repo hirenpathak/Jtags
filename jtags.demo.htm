@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jQuery tags demo</title>
+		<link type="text/css" rel="stylesheet" href="style.css" />
+		<link type="text/css" rel="stylesheet" href="jtags.css" />
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>		
+		<script type="text/javascript" src="jtags.js"></script>
+		<script type="text/javascript" src="http://www.benoitvidis.com/wordpress/wp-content/themes/monochrome/js/jscript.js"></script>
+
+		
+		<script>
+			$(function(){
+				$('.tags').tags({
+					'separator':',',
+					'add':function(added_tag, tags){
+						$('#status').html('Tag added: <em>' + added_tag  + '</em>. ' + tags.tags.length + ' tags in total.');
+					},
+					'remove':function(removed_tag, tags){
+						$('#status').html('Tag removed: <em>' + removed_tag  + '</em>. ' + tags.tags.length + ' tags in total.');
+					}
+				});
+				$('button.show').click(function(){
+					alert($('.tags').val());
+				});
+			});
+		</script>
+		
+		<style type="text/css">
+			.jq_tags_editor
+			{
+				width: 500px;
+				margin-bottom: 15px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h1>jTags demo</h1>
+		
+		<p>
+			This plugin transforms an input element to display some tags elements in the way <a href="http://www.tumblr.com">tumblr</a> does.<br />
+			The field value is the concatenation of the tags (separator: ", ").
+		</p>
+		
+		<div class="demo">
+			<input type="text" value="some,tags,here" class="tags" ></input>
+			<button class="show">Show value</button>
+			<p id="status"></p>
+		</div>
+		
+		<p>
+			<h3>Usage</h3>
+			<pre lang="js">$('.tags').tags(options);</pre>
+			
+			<h4>options</h4>
+			<ul>
+				<li><strong>separator</strong>: The character used to separate tags and to concatenate the result. Default is the coma (",")</li>
+				<li><strong>add(added_tag_txt, tags): callback function when a new tag is added to the list. Gets the added tag content and the tags object as parameters.</strong>
+				<li><strong>remove(removed_tag_txt, tags): callback function when a tag is removed. Gets the removed tag content and the tags object as parameters </strong>
+				
+			</ul>
+		</p>
+		<p>
+			<h3>Example</h3>
+			<pre lang="js">
+$('.tags').tags({
+	'separator':',',
+	'add':function(added_tag, tags){
+		$('#status').html('Tag added: ' + added_tag  + '. ' + tags.tags.length + ' tags in total');
+	},
+	'remove':function(removed_tag, tags){
+		$('#status').html('Tag removed: ' + removed_tag  + '. ' + tags.tags.length + ' tags in total');
+	}
+});
+$('button.show').click(function(){
+	alert($('.tags').val());
+});
+			</pre>
+		</p>
+		
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+				var pageTracker = _gat._getTracker("UA-1993097-4");
+				pageTracker._trackPageview();
+			} 
+			catch(err) {	
+				console.log('error loading ga');	
+			}
+</script>
+	</body>
+</html>
