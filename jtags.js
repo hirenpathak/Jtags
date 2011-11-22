@@ -62,13 +62,15 @@ $.fn.tags = function(options){
 		add_tag:function(){
 			var tag_txt = $(this.ed).find('input')
 				.val().replace( new RegExp('["' + this.sep + ' ]', 'gi'), '');
-			
+			//copying the array before adding the new tag	
+			var beforePush = jQuery.extend(true,[],this.tags);			
 			if( (tag_txt != '') && (jQuery.inArray(tag_txt, this.tags) < 0) ){
 				this.tags.push(tag_txt);
 				this.refresh_list();
 			}
 			$(this.ed).find('input').val('');
-			this.addCallBack(tag_txt, this);
+			//Providing an array in the callback function to check the added tag against an array before it was added
+			this.addCallBack(tag_txt, this, beforePush);
 		},		
 		remove_tag:function(tag_txt){
 			r = [];
